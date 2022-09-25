@@ -124,8 +124,8 @@ float medio(){
                 }
                 break;
             case 2:
-                a = 10 + rand() % 25;
-                b = 10 + rand() % 25;
+                a = 5 + rand() % 20;
+                b = 5 + rand() % 20;
                 printf ("%d x %d = ", a, b);
                 scanf("%f", &resposta);
                 if (resposta==a*b){
@@ -138,7 +138,7 @@ float medio(){
                 }
                 break;
             case 3:
-                a = 50 + rand() % 500;
+                a = 50 + rand() % 450;
                 b = 5 + rand() % 10;
                 printf ("%d / %d = ", a, b);
                 scanf("%f", &resposta);
@@ -201,8 +201,8 @@ float dificil(){
                 }
                 break;
             case 2:
-                a = 100 + rand() % 1000;
-                b = 100 + rand() % 1000;
+                a = 100 + rand() % 400;
+                b = 100 + rand() % 400;
                 printf ("%d x %d = ", a, b);
                 scanf("%f", &resposta);
                 if (resposta==a*b){
@@ -216,7 +216,7 @@ float dificil(){
                 break;
             case 3:
                 a = 100 + rand() % 5000;
-                b = 50 + rand() % 100;
+                b = 10 + rand() % 90;
                 printf ("%d / %d = ", a, b);
                 scanf("%f", &resposta);
                 if (resposta==a/b){
@@ -249,24 +249,30 @@ int main()
      switch(escolha){
         case 1:
             rank = fopen("rankf.txt", "r");
+            while (!feof(rank)){
+                fscanf(rankf,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                cont++;
+            }
             reg[cont].ponto = facil();
             break;
         case 2:
             rank = fopen("rankm.txt", "r");
+            while (!feof(rank)){
+                fscanf(rankm,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                cont++;
+            }
             reg[cont].ponto = medio();
             break;
         case 3:
             rank = fopen("rankd.txt", "r");
+            while (!feof(rank)){
+                fscanf(rankd,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                cont++;
+            }
             reg[cont].ponto = dificil();
             break;
     }
 
-
-
-    while (!feof(rank)){
-        fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
-        cont++;
-    }
     fclose(rank);
 
     switch(escolha){
