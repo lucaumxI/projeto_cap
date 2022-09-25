@@ -226,24 +226,30 @@ int main()
      switch(escolha){
         case 1:
             rank = fopen("rankf.txt", "r");
+             while (!feof(rank)){
+                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                cont++;
+            }
             reg[cont].ponto = facil();
             break;
         case 2:
             rank = fopen("rankm.txt", "r");
+             while (!feof(rank)){
+                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                cont++;
+            }
             reg[cont].ponto = medio();
             break;
         case 3:
             rank = fopen("rankd.txt", "r");
+             while (!feof(rank)){
+                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                cont++;
+            }
             reg[cont].ponto = dificil();
             break;
     }
 
-
-
-    while (!feof(rank)){
-        fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
-        cont++;
-    }
     fclose(rank);
 
     switch(escolha){
