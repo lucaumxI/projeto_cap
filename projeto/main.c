@@ -235,7 +235,7 @@ float dificil(){
 int main()
 {
     int escolha;
-    FILE* rank;
+    FILE* rank = fopen("rank.txt", "r");
     struct registro reg[11] = {'NULL', 0};
     int cont=0;
 
@@ -243,30 +243,30 @@ int main()
      switch(escolha){
         case 1:
             rank = fopen("rankf.txt", "r");
-            while (fscanf(rank,"%f", reg[cont].ponto)!=EOF){
+            while (fscanf(rank,"%f", &reg[cont].ponto)!=EOF){
                 printf("%f\n", reg[cont].ponto);
                 cont++;
             }
             reg[cont].ponto = facil();
-            scanf("%s", reg[cont].nome);
+            scanf("%s", &reg[cont].nome);
             break;
         case 2:
             rank = fopen("rankm.txt", "r");
             while (!feof(rank)){
-                fscanf(rank,"%s %f", reg[cont].nome, reg[cont].ponto);
+                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
                 cont++;
             }
             reg[cont].ponto = medio();
-            scanf("%s", reg[cont].nome);
+            scanf("%s", &reg[cont].nome);
             break;
         case 3:
             rank = fopen("rankd.txt", "r");
             while (!feof(rank)){
-                fscanf(rank,"%s %f", reg[cont].nome, reg[cont].ponto);
+                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
                 cont++;
             }
             reg[cont].ponto = dificil();
-            scanf("%s", reg[cont].nome);
+            scanf("%s", &reg[cont].nome);
             break;
     }
 
