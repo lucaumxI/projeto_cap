@@ -250,7 +250,7 @@ int main()
         case 1:
             rank = fopen("rankf.txt", "r");
             while (!feof(rank)){
-                fscanf(rankf,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
                 cont++;
             }
             reg[cont].ponto = facil();
@@ -258,7 +258,7 @@ int main()
         case 2:
             rank = fopen("rankm.txt", "r");
             while (!feof(rank)){
-                fscanf(rankm,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
                 cont++;
             }
             reg[cont].ponto = medio();
@@ -266,7 +266,7 @@ int main()
         case 3:
             rank = fopen("rankd.txt", "r");
             while (!feof(rank)){
-                fscanf(rankd,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
                 cont++;
             }
             reg[cont].ponto = dificil();
