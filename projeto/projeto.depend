@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1664126826 source:c:\users\matri\onedrive\Área de trabalho\projeto\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+
+1663860772 source:c:\users\matri\onedrive\Área de trabalho\projeto\teste.c
+	<stdio.h>
+	<stdlib.h>
+
