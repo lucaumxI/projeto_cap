@@ -4,17 +4,17 @@
 #include <time.h>
 
 float conta(float tempo){
-    float ponto=1000;
+    float ponto=0;
 
-    if (tempo>=-5){
-        ponto = ponto - 100 * (pow(2, 0.1*tempo));
-    }
-    if (tempo <-5 && tempo>-60){
-        ponto = ponto - 10 * (pow(tempo, 1.1));
-    }
-    else{
-        ponto = 1000;
-    }
+    if (tempo<=5){
+        ponto = ponto + 100 * (pow(2, 0.1*tempo));
+    } else if (tempo>5 && tempo<60){
+                ponto = ponto + 10 * (pow(tempo, 1.1));
+            }
+            else{
+                ponto = 1000;
+                printf("a");
+            }
     return ponto;
 }
 
@@ -52,6 +52,8 @@ float facil(){
                 scanf("%f", &resposta);
                 if (resposta==a+b){
                     pont = pont + 1000;
+                    timer = (clock() - timer) / CLOCKS_PER_SEC;
+                    pont = pont - conta((float)(timer));
                 }
                 else{
                     vida--;
@@ -64,14 +66,16 @@ float facil(){
                 scanf("%f", &resposta);
                 if (resposta==a-b){
                     pont = pont + 1000;
+                    timer = (clock() - timer) / CLOCKS_PER_SEC;
+                    pont = pont - conta((float)(timer));
                 }
                 else{
                     vida--;
                 }
                 break;
         }
-        timer = (clock() - timer) / CLOCKS_PER_SEC;
-        pont = pont - conta(timer);
+
+        printf("%f\n", pont);
 
         cont++;
     }
@@ -98,6 +102,8 @@ float medio(){
                 scanf("%f", &resposta);
                 if (resposta==a+b){
                     pont = pont + 1000;
+                    timer = (clock() - timer) / CLOCKS_PER_SEC;
+                    pont = pont - conta((float)(timer));
                 }
                 else{
                     vida--;
@@ -110,6 +116,8 @@ float medio(){
                 scanf("%f", &resposta);
                 if (resposta==a-b){
                     pont = pont + 1000;
+                    timer = (clock() - timer) / CLOCKS_PER_SEC;
+                    pont = pont - conta((float)(timer));
                 }
                 else{
                     vida--;
@@ -122,6 +130,8 @@ float medio(){
                 scanf("%f", &resposta);
                 if (resposta==a*b){
                     pont = pont + 1000;
+                    timer = (clock() - timer) / CLOCKS_PER_SEC;
+                    pont = pont - conta((float)(timer));
                 }
                 else{
                     vida--;
@@ -134,6 +144,8 @@ float medio(){
                 scanf("%f", &resposta);
                 if (resposta==a/b){
                     pont = pont + 1000;
+                    timer = (clock() - timer) / CLOCKS_PER_SEC;
+                    pont = pont - conta((float)(timer));
                 }
                 else{
                     vida--;
@@ -167,6 +179,8 @@ float dificil(){
                 scanf("%f", &resposta);
                 if (resposta==a+b){
                     pont = pont + 1000;
+                    timer = (clock() - timer) / CLOCKS_PER_SEC;
+                    pont = pont - conta((float)(timer));
                 }
                 else{
                     vida--;
@@ -179,6 +193,8 @@ float dificil(){
                 scanf("%f", &resposta);
                 if (resposta==a-b){
                     pont = pont + 1000;
+                    timer = (clock() - timer) / CLOCKS_PER_SEC;
+                    pont = pont - conta((float)(timer));
                 }
                 else{
                     vida--;
@@ -191,6 +207,8 @@ float dificil(){
                 scanf("%f", &resposta);
                 if (resposta==a*b){
                     pont = pont + 1000;
+                    timer = (clock() - timer) / CLOCKS_PER_SEC;
+                    pont = pont - conta((float)(timer));
                 }
                 else{
                     vida--;
@@ -203,6 +221,8 @@ float dificil(){
                 scanf("%f", &resposta);
                 if (resposta==a/b){
                     pont = pont + 1000;
+                    timer = (clock() - timer) / CLOCKS_PER_SEC;
+                    pont = pont - conta((float)(timer));
                 }
                 else{
                     vida--;
