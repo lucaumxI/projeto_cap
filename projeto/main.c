@@ -9,8 +9,11 @@ float conta(float tempo){
     if (tempo<=5){
         ponto = ponto - 100 * (pow(2, 0.1*tempo));
     }
+    if (tempo >5 && tempo<20){
+        ponto = ponto - 10 * (pow(tempo, 1.5));
+    }
     else{
-        ponto = ponto - 10 * (pow(tempo, 2));
+        ponto = 1000;
     }
     return ponto;
 }
@@ -226,30 +229,24 @@ int main()
      switch(escolha){
         case 1:
             rank = fopen("rankf.txt", "r");
-             while (!feof(rank)){
-                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
-                cont++;
-            }
             reg[cont].ponto = facil();
             break;
         case 2:
             rank = fopen("rankm.txt", "r");
-             while (!feof(rank)){
-                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
-                cont++;
-            }
             reg[cont].ponto = medio();
             break;
         case 3:
             rank = fopen("rankd.txt", "r");
-             while (!feof(rank)){
-                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
-                cont++;
-            }
             reg[cont].ponto = dificil();
             break;
     }
 
+
+
+    while (!feof(rank)){
+        fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
+        cont++;
+    }
     fclose(rank);
 
     switch(escolha){
