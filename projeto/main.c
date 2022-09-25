@@ -23,14 +23,9 @@ struct registro{
     float ponto;
 };
 
-int compara(struct registro *a, struct registro *b){
-    if (a->ponto == b->ponto)
-        return 0;
-    else if (a->ponto > b->ponto)
-        return -1;
-    else
-        return 1;
-}
+int compara (const void * a, const void * b) {
+    return ( *(int*)a - *(int*)b );
+     }
 
 float facil(){
     int a, b, vida=2;
@@ -240,36 +235,38 @@ float dificil(){
 int main()
 {
     int escolha;
-    FILE* rank = fopen("rank.txt", "r");
+    FILE* rank;
     struct registro reg[11] = {'NULL', 0};
     int cont=0;
 
     scanf("%d", &escolha);
-    scanf("%s", &reg[cont].nome);
      switch(escolha){
         case 1:
             rank = fopen("rankf.txt", "r");
-            while (!feof(rank)){
-                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
+            while (fscanf(rank,"%f", reg[cont].ponto)!=EOF){
+                printf("%f\n", reg[cont].ponto);
                 cont++;
             }
             reg[cont].ponto = facil();
+            scanf("%s", reg[cont].nome);
             break;
         case 2:
             rank = fopen("rankm.txt", "r");
             while (!feof(rank)){
-                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                fscanf(rank,"%s %f", reg[cont].nome, reg[cont].ponto);
                 cont++;
             }
             reg[cont].ponto = medio();
+            scanf("%s", reg[cont].nome);
             break;
         case 3:
             rank = fopen("rankd.txt", "r");
             while (!feof(rank)){
-                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
+                fscanf(rank,"%s %f", reg[cont].nome, reg[cont].ponto);
                 cont++;
             }
             reg[cont].ponto = dificil();
+            scanf("%s", reg[cont].nome);
             break;
     }
 
@@ -286,10 +283,13 @@ int main()
             rank = fopen("rankd.txt", "w");
             break;
     }
-
+    qsort(reg, cont+1, sizeof(struct registro), compara);
+    for(int i = 0; i<cont+1; i++){
+        fprintf(rank,"%f\n", reg[i].ponto);
+        }
     printf ("%f", reg[cont].ponto);
 
-    qsort(reg, cont+1, sizeof(struct registro), compara);
+
     fclose(rank);
 
     return 0;
