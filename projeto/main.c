@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include <string.h>
 
 float conta(float tempo){
     float ponto=0;
@@ -24,7 +25,9 @@ struct registro{
 };
 
 int compara (const void * a, const void * b) {
-    return ( *(int*)a - *(int*)b );
+    struct registro *p1 = (struct registro*) a;
+    struct registro * p2 = (struct registro * )b;
+    return (p2->ponto - p1->ponto);
      }
 
 float facil(){
@@ -243,30 +246,24 @@ int main()
      switch(escolha){
         case 1:
             rank = fopen("rankf.txt", "r");
-            while (fscanf(rank,"%f", &reg[cont].ponto)!=EOF){
-                printf("%f\n", reg[cont].ponto);
+            while (fscanf(rank,"%s %f",reg[cont].nome ,&reg[cont].ponto)!=EOF){
                 cont++;
             }
             reg[cont].ponto = facil();
-            scanf("%s", &reg[cont].nome);
             break;
         case 2:
             rank = fopen("rankm.txt", "r");
-            while (!feof(rank)){
-                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
+            while (fscanf(rank,"%s %f",reg[cont].nome ,&reg[cont].ponto)!=EOF){
                 cont++;
             }
             reg[cont].ponto = medio();
-            scanf("%s", &reg[cont].nome);
             break;
         case 3:
             rank = fopen("rankd.txt", "r");
-            while (!feof(rank)){
-                fscanf(rank,"%s %f", reg[cont].nome, &reg[cont].ponto);
+            while (fscanf(rank,"%s %f",reg[cont].nome ,&reg[cont].ponto)!=EOF){
                 cont++;
             }
             reg[cont].ponto = dificil();
-            scanf("%s", &reg[cont].nome);
             break;
     }
 
@@ -283,11 +280,15 @@ int main()
             rank = fopen("rankd.txt", "w");
             break;
     }
+    scanf("%s", reg[cont].nome);
     qsort(reg, cont+1, sizeof(struct registro), compara);
     for(int i = 0; i<cont+1; i++){
-        fprintf(rank,"%f\n", reg[i].ponto);
+        for(int n = 0; n<strlen(reg[i].nome);n++){
+        fputc(reg[i].nome[n],rank);
         }
-    printf ("%f", reg[cont].ponto);
+        fprintf(rank," %f\n", reg[i].ponto);
+
+    }
 
 
     fclose(rank);
