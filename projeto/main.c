@@ -9,8 +9,8 @@ float conta(float tempo){
     if (tempo<=5){
         ponto = ponto - 100 * (pow(2, 0.1*tempo));
     }
-    if (tempo >5 && tempo<20){
-        ponto = ponto - 10 * (pow(tempo, 1.5));
+    if (tempo >5 && tempo<60){
+        ponto = ponto - 10 * (pow(tempo, 1.1));
     }
     else{
         ponto = 1000;
