@@ -1,0 +1,79 @@
+/*******************************************************************************************
+*   raylib [core] example - Basic window
+*
+*   Welcome to raylib!
+*
+*   You can find all basic examples on C:\raylib\raylib\examples folder or
+*   raylib official webpage: www.raylib.com
+*
+*   Enjoy using raylib. :)
+*
+*   This example has been created using raylib 1.0 (www.raylib.com)
+*   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
+*
+*   Copyright (c) 2013-2016 Ramon Santamaria (@raysan5)
+*
+********************************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+#include <string.h>
+#include "raylib.h"
+
+int main()
+{
+    // Initialization
+    //--------------------------------------------------------------------------------------
+    int screenWidth = 800;
+    int screenHeight = 450;
+
+    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+
+    Font font = LoadFont("jupcrash.fon");
+
+    Image credito = LoadImage("pira.png");
+    ImageResize(&credito, 800, 600);
+
+    ImageDrawTextEx(&credito, font, "CREDITOS:", (Vector2){ 270, 160 }, (float)font.baseSize*2.3, 5, WHITE);
+    ImageDrawText(&credito, "-> Lucas Nunes - Joao Pedro Andrade - Rafael Banin",0, 200, 14, WHITE);
+    ImageDrawText(&credito, "-> Imagens usadas:",0, 220, 14, WHITE);
+    ImageDrawText(&credito, "- https://br.depositphotos.com/stock-photos/pir%C3%A2mides.html",0, 240, 14, WHITE);
+    ImageDrawText(&credito, "- https://www.freeimages.com/pt/photo/sphinx-1558589",0, 260, 14, WHITE);
+    ImageDrawText(&credito, "- https://www.shutterstock.com/image-vector/animation-color-drawing-sphinx-horned-lions-1860233221",0, 280, 14, WHITE);
+    ImageDrawText(&credito, "-> Musicas usadas:",0, 300, 14, WHITE);
+    ImageDrawText(&credito, "- https://pixabay.com/music/search/egypt/",0, 320, 14, WHITE);
+
+    Texture2D texture = LoadTextureFromImage(credito);
+
+    UnloadFont(font);
+    UnloadImage(credito);
+
+    SetTargetFPS(60);
+    int n = 0;
+    //--------------------------------------------------------------------------------------
+
+    // Main game loop
+    while (!WindowShouldClose())    // Detect window close button or ESC key
+    {
+        // Update
+        //----------------------------------------------------------------------------------
+        // TODO: Update your variables here
+        //----------------------------------------------------------------------------------
+
+        // Draw
+        //----------------------------------------------------------------------------------
+        BeginDrawing();
+                DrawTexture(texture, screenWidth/2 - texture.width/2, screenHeight/2 - texture.height/2 - 40, WHITE);
+
+        EndDrawing();
+
+    }
+    UnloadTexture(texture);
+    // De-Initialization
+    //--------------------------------------------------------------------------------------
+    CloseWindow();        // Close window and OpenGL context
+    //--------------------------------------------------------------------------------------
+
+    return 0;
+}
