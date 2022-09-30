@@ -192,6 +192,7 @@ float input(int *vida,int *cont)
             {
 
                 *vida = *vida - 1;
+                printf("%d\n",*vida);
                 }
 
                 break;
@@ -205,6 +206,7 @@ float input(int *vida,int *cont)
             else
             {
                 *vida = *vida - 1;
+                printf("%d\n",*vida);
                 }
                 break;
 
@@ -219,7 +221,9 @@ float input(int *vida,int *cont)
             }
              else
             {
-                *vida = *vida - 1;      
+                printf("%d\n",*vida);
+                *vida = *vida - 1;
+                printf("%d\n",*vida);
                 }
 
                 break;
@@ -234,7 +238,9 @@ float input(int *vida,int *cont)
             }
             else
             {
+                printf("%d\n",*vida);
                 *vida = *vida - 1;
+                printf("%d\n",*vida);
                 }
                 break;
             }
@@ -261,7 +267,11 @@ int main()
     const int screenWidth = 800;
     const int screenHeight = 550;
     InitWindow(screenWidth, screenHeight, "O Enigma da Esfinge");
-    GameScreen currentScreen = GAMEPLAY;
+    GameScreen currentScreen = TITLE;
+    InitAudioDevice();
+    Music music = LoadMusicStream("msc.mp3");
+    PlayMusicStream(music);
+
     SetTargetFPS(20);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------// Load image data into CPU memory (RAM)
     Texture2D texture =  LoadTexture("esfingeCeu.png");
@@ -313,6 +323,8 @@ int main()
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
+        PlayMusicStream(music);
+        UpdateMusicStream(music);
 
                 BeginDrawing();
         ClearBackground(BLACK);
@@ -330,6 +342,9 @@ int main()
             {
                 20.0f, 20.0f
             }, (float)font.baseSize, 0.0f, WHITE);
+            //DrawRectangleRec(rec, BLANK);
+            //DrawRectangleRec(recu[0], BLACK);
+            //DrawRectangleRec(recu[1], BLACK);
             DrawText("Criadores: Joao Andrade---Lucas Nunes---Rafael Banin", 10, 500, 20, WHITE);
             DrawText("Pressione ENTER para iniciar", 250, 400, 20, WHITE);
             DrawText("Pressione C para ver os controles", 220, 440, 20, WHITE);
@@ -394,7 +409,7 @@ int main()
                 4.5f, 345.0f
             }, (float)hist.baseSize, 0.0f, WHITE);
             DrawText("Clique S para prosseguir ao jogo", 75,400,40,WHITE);
-            
+            //sif(reg[10].ponto!=0)reg[10].ponto=0;
 
         }
         break;
@@ -439,7 +454,7 @@ int main()
             // Check if more characters have been pressed on the same frame
             while (key > 0)
             {
-                // NOTE: Only allow keys in range 
+                // NOTE: Only allow keys in range [32..125]
                 if ((key >= 0) && (key <= 257) && (letterCount < MAX_INPUT_CHARS))
                 {
                     nome[letterCount] = (char)key;
@@ -527,7 +542,7 @@ int main()
         {
             if (letterCount < MAX_INPUT_CHARS)
             {
-         
+                // Draw blinking underscore char
                 if (((framesCounter/20)%2) == 0) DrawText("_", (int)digNomes.x + 8 + MeasureText(name, 40), (int)digNomes.y + 12, 40, MAROON);
             }
             else DrawText("Press BACKSPACE to delete chars...", 230, 300, 20, GRAY);
@@ -541,7 +556,7 @@ int main()
         case RANK:
         {
 
-          
+            //ClearBackground(GRAY);
             DrawTexture(pirRank,0,0,WHITE);
             DrawTexture(papiro,180,0,WHITE);
             DrawTextEx(font,"RANKING",(Vector2){305.0f,50.0f},70, 0.0f, BLACK);
@@ -575,7 +590,7 @@ int main()
         case END:
         {
 
-           
+            //DrawEx(&credito, "CREDITOS:", (Vector2){ 270, 160 }, (float)font.baseSize*2.3, 5, WHITE);
             DrawTexture(texture2, 0, 0, WHITE);
             DrawText( "-> Lucas Nunes - Joao Pedro Andrade - Rafael Banin",0, 190, 20, WHITE);
             DrawText( "-> Imagens usadas:",0, 220, 20, WHITE);
@@ -620,14 +635,11 @@ int main()
 
     }
     //----------------------------------------------------------------------------------
+    UnloadMusicStream(music);
 
+    CloseAudioDevice();
     CloseWindow();
     return 0;
 
 
 }
-
-
-
-
-
