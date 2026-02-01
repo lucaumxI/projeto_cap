@@ -1,14 +1,14 @@
 # O Enigma da Esfinge
 
 ### **Integrantes:**
-####  - Lucas Nunes Garcia - 811946
-####  - Rafael Banin Ferraz de Camargo - 812130
-####  - João Pedro Reis Abdrade - 813630
+####  - Lucas Nunes Garcia
+####  - Rafael Banin Ferraz de Camargo
+####  - João Pedro Reis Abdrade
 
 
 # 🏺 O Enigma da Esfinge (The Riddle of the Sphinx)
 
-> **⚠️ LEGACY PROJECT (20XX)**
+> **⚠️ LEGACY PROJECT (2022)**
 >
 > This project is archived as a **museum piece** from my **first semester** of Computer Engineering.
 > It represents my first steps into game development and C programming using graphical libraries.
