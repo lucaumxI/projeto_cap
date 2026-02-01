@@ -1,22 +1,41 @@
-# raylib template for Code::Blocks
+# 🏺 O Enigma da Esfinge (The Riddle of the Sphinx)
 
-1. Install raylib. 
+> **⚠️ LEGACY PROJECT (20XX)**
+>
+> This project is archived as a **museum piece** from my **first semester** of Computer Engineering.
+> It represents my first steps into game development and C programming using graphical libraries.
+> *The code structure, logic, and conventions reflect my knowledge level at that time and do not represent my current engineering standards.*
 
-On Windows you should install the **Windows Installer (with MinGW compiler)** package.
-On other platforms you can install however you like following the instructions in the wiki.
+## 📜 Sobre o Jogo (About)
 
-    * https://github.com/raysan5/raylib/releases/download/4.2.0/raylib_installer_v420.mingw.exe
-    * https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
-    * https://github.com/raysan5/raylib/wiki/Working-on-macOS
+**O Enigma da Esfinge** é um jogo educativo de matemática desenvolvido em **C** utilizando a biblioteca **Raylib**. O jogador assume o papel de um explorador que deve responder corretamente a desafios aritméticos para sobreviver.
 
-2. Install and run Code::Blocks.
+### A História (Lore)
+O jogo segue a jornada de **Jose Mateus**, um explorador do interior da Bahia. Durante uma viagem ao Egito, ele encontra uma bússola misteriosa que o guia até a Grande Esfinge de Gizé. Ao despertar a criatura antiga, ele recebe um ultimato: resolver 10 enigmas matemáticos ou ser devorado.
 
-3. **Windows only**: Select `Settings` `Compiler` `Toolchain executables`.
-Change `Compiler's installation directory` to `C:\raylib\MingGW`.  Do *not* press auto-detect.
-There is a screenshot below showing how it should look.  Press `OK`.
+## 🎮 Como Jogar (Gameplay)
 
-4. Select `File` `Open` and open the `core_basic_windows.cbp` file.
+O jogo consiste em uma bateria de perguntas matemáticas geradas aleatoriamente (Soma, Subtração, Multiplicação e Divisão).
 
-![Compiler Settings](compiler_settings.png)
+* **Objetivo:** Acertar 10 perguntas consecutivas.
+* **Pontuação:** Quanto mais rápido você responder, mais pontos ganha.
+* **Vidas:** Você tem chances limitadas. Errar resulta em perda de vida.
+* **Ranking:** O jogo possui um sistema de *High Score* local (salvo em arquivo txt).
 
-For an example with resources, see https://github.com/electronstudio/raylib-game-template-codeblocks
+### Controles
+* **Teclado Numérico:** Digitar a resposta.
+* **Enter:** Confirmar resposta.
+* **Backspace:** Corrigir número.
+
+## 🛠️ Tecnologias Utilizadas
+
+* **Linguagem:** C
+* **Biblioteca Gráfica:** [Raylib](https://www.raylib.com/)
+* **Áudio/Assets:** Carregamento de texturas e música MP3.
+
+## 💾 Compilação e Execução
+
+Este projeto foi originalmente compilado para Windows. Para rodar, é necessário ter o ambiente de desenvolvimento configurado com a Raylib (MinGW/GCC).
+
+```bash
+gcc main.c -o esfinge.exe -lraylib -lopengl32 -lgdi32 -lwinmm
